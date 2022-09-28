@@ -1,0 +1,62 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Fichier de macros et de configuration
+%% pour les mathématiques
+%%
+%% Auteur : Rayane Annen
+%% Date   : 28.09.2022 
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Macros
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\Nstar}{\mathbb{N}^*}
+\newcommand{\Id}{\ensuremath{\mathbbm{1}}}
+\newcommand{\ddx}{\ensuremath{\frac{d}{dx}}}
+\renewcommand{\O}{\emptyset}
+\DeclareMathOperator{\Real}{\mathfrak{Re}}
+\DeclareMathOperator{\Imag}{\mathfrak{Im}}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\argtanh}{argtanh}
+\newcommand{\complexmat}{\begin{pmatrix} x & -y \\ y & x \end{pmatrix}}
+\newcommand*\conj[1]{\overline{#1}}
+\newcommand{\matspace}[2]{\ensuremath{\mathcal{M}_{#1}(#2)}}
+\newcommand{\genericbase}{\begin{pmatrix} \lambda & \rho \\ \mu & \sigma \end{pmatrix}}
+\newcommand{\genericmatrixbis}{\begin{pmatrix} \lambda & \mu \\ \rho & \sigma \end{pmatrix}}
+\newcommand{\genericmatrix}{\begin{pmatrix} \alpha & \beta \\ \gamma & \delta \end{pmatrix}}
+\DeclareMathOperator{\Vect}{Vect}
+\DeclareMathOperator{\Rel}{Rel}
+\newcommand{\vect}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
+\DeclareRobustCommand\iff{\;\Leftrightarrow\;}
+
+% Nouveau style pour les théorèmes
+
+\newtheoremstyle{linebreak}
+  {\topsep}
+  {\topsep}
+  {\normalfont\itshape}
+  {0pt}
+  {}
+  {}
+  {\newline}
+  {\textbf{\thmname{#1}~\thmnumber{#2}}\thmnote{ (#3)}}
+\theoremstyle{linebreak}  
+
+% Intégrations des nouveaux environnements
+% Lemme, corollaire, théorèmes
+
+\iflang
+    \newtheorem{theorem}{Théorème}[section]
+    \newtheorem{corollary}{Corollaire}[theorem]
+    \newtheorem{lemma}[theorem]{Lemme}
+\else
+    \newtheorem{theorem}{Theorem}[section]
+    \newtheorem{corollary}{Corollary}[theorem]
+    \newtheorem{lemma}[theorem]{Lemma}
+\fi

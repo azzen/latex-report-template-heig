@@ -1,0 +1,78 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Préambule du modèle de document pour les rapports de manipulation 
+%% à l'HEIG-VD.
+%% 
+%% À noter que ce document doit être compilé avec LuaTeX pour fonctionner
+%%
+%% Auteur : Rayane Annen
+%% Date   : 24.09.2022 
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{./constants.tex}
+
+\usepackage[utf8]{luainputenc}
+\usepackage[T1]{fontenc}              % Character encoding
+\usepackage{textcomp}                 % Text Companion fonts
+\usepackage{xcolor}                   % Custom colors
+
+\iflang
+    \usepackage[french]{babel}        % French typography rules
+\else
+    \usepackage[USenglish]{babel}     % US English typography rules
+\fi
+
+\usepackage{graphicx}                 % Image insertion
+\usepackage{amsmath}                  % Basic mathematics package
+
+\ifmath
+    % Additional mathematics and physics packages
+    \usepackage{amssymb,amsthm,physics,mathrsfs,esvect,bbm,mathtools}
+    \input{./libs/mmacros.sty}        % Mathematics macros
+\fi
+
+\usepackage{tikz}                     % Tikz figures
+\usepackage{tikz-3dplot}
+\usetikzlibrary{positioning}
+
+\usepackage{minted}                   % Code formatting
+\usemintedstyle{vs}
+\definecolor{LightGray}{gray}{0.9}
+\setminted{
+    frame=lines,
+    framesep=2mm,
+    baselinestretch=1.2,
+    bgcolor=LightGray,
+    fontsize=\footnotesize,
+    linenos}
+
+\usepackage{fontspec}                 % Font Setup (LuaTeX)
+
+\setmainfont{CMU Bright}
+
+% \setmainfont[Numbers = Uppercase,
+%     Ligatures = TeX,
+%     BoldFont  = CMU Bright SemiBold,
+%     ItalicFont = CMU Bright Oblique,
+% ]{CMU Bright Roman}
+
+\setmonofont{Ubuntu Mono}
+
+\usepackage{hyperref}                 % Hyperlinks support
+\usepackage{pdfpages}                 % PDF inclusion
+\usepackage{transparent}              % Transparent color
+\usepackage{import}                   % used to import figures
+
+% Page margins
+\usepackage[top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm, showframe=false]{geometry}
+\usepackage{fancyhdr}                 % Custom header and footer
+
+% Header and footer condiguration
+\fancyhead[L]{\reportTitle}
+\fancyfoot{}
+\renewcommand{\footrulewidth}{1pt}
+\fancyfoot[R]{Page \thepage}
+\fancyfoot[L]{HEIG-VD - \authorName}
+
+\input{./libs/incfig.sty}

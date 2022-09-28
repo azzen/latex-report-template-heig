@@ -1,0 +1,49 @@
+% !TeX root = main.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Modèle de rapport de manipulation à l'HEIG-VD
+%% Point d'entrée
+%%
+%% Auteur : Rayane Annen
+%% Date   : 24.09.2022 
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[a4paper, 11pt, oneside]{article}
+
+% inclusion du préambule
+\input{./preamble.tex}
+
+% % Police d'écriture sans-sérif
+% \usepackage{cmbright}
+
+\begin{document}
+
+% Compteur de page en notation romaine pour
+% les pages d'introductions
+\renewcommand{\thepage}{\roman{page}}
+
+% inclusion de la première page
+\input{./titlepage.tex}
+\thispagestyle{empty}
+
+% Remise à zéro du compteur de page
+\setcounter{page}{0}
+
+\newpage
+\tableofcontents
+
+\newpage
+
+\setcounter{page}{1}
+\renewcommand{\thepage}{\arabic{page}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Inclure les différents chapitres à partir d'ici
+
+\input{./chapters/intro.tex}
+\input{./chapters/tikz.tex}
+\input{./chapters/code.tex}
+
+\end{document}

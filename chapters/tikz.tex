@@ -1,0 +1,68 @@
+\section{TikZ}
+
+Tikz example:
+
+\begin{center}
+    \begin{tikzpicture}[
+            roundnode/.style={circle, draw=green!60, fill=green!5, very thick, minimum size=7mm},
+            squarednode/.style={rectangle, draw=red!60, fill=red!5, very thick, minimum size=5mm},
+        ]
+        %Nodes
+        \node[squarednode]      (maintopic)                              {2};
+        \node[roundnode]        (uppercircle)       [above=of maintopic] {1};
+        \node[squarednode]      (rightsquare)       [right=of maintopic] {3};
+        \node[roundnode]        (lowercircle)       [below=of maintopic] {4};
+
+        %Lines
+        \draw[->] (uppercircle.south) -- (maintopic.north);
+        \draw[->] (maintopic.east) -- (rightsquare.west);
+        \draw[->] (rightsquare.south) .. controls +(down:7mm) and +(right:7mm) .. (lowercircle.east);
+    \end{tikzpicture}
+\end{center}
+
+\begin{center}
+    \tdplotsetmaincoords{70}{105}
+    \begin{tikzpicture}[tdplot_main_coords]
+        \draw[thick,-latex] (0,0,0) -- (6,0,0) node[left]{$x$};
+        \draw[thick,-latex] (0,0,0) -- (0,6,0) node[right]{$y$};
+        \draw[thick,-latex] (0,0,0) -- (0,0,4) node[left]{$z$};
+        \coordinate[label=left:$O$] (O) at (0,0,0);
+        \draw (-0.2,2,0) -- (0.2,2,0) node[above right]{$c$};
+        \draw (-0.2,4,0) -- (0.2,4,0) node[above right]{$d$};
+        %
+        \draw[fill=gray!30] (1,2,0) coordinate (b1) -- (4,2,0) coordinate (b2)
+        -- (4,3.5,0) coordinate (b3)
+        to[out=0,in=-135] (3,4,0) coordinate (b4) --(2,4,0) coordinate (b5)
+        to[out=-270,in=0] (1,2,0) coordinate (b6) -- cycle;
+        \tdplotsetrotatedcoords{0}{0}{0}
+        \coordinate (Shift) at (0,0,2.5);
+        \tdplotsetrotatedcoordsorigin{(Shift)}
+        \begin{scope}[tdplot_rotated_coords,red]
+            \draw (1,2,0) coordinate (m1) edge[dashed] (4,2,0) ;
+            \draw (4,2,0) coordinate (m2) -- (4,3.5,0) coordinate (m3)
+            to[out=0,in=-135] (3,4,0) coordinate (m4) --(2,4,0) coordinate (m5)
+            edge[out=-270,in=0,dashed] (1,2,0);
+            \coordinate (m6) at (1,2,0);
+        \end{scope}
+
+        \coordinate (Shift) at (0.5,0.5,3.5);
+        \begin{scope}[tdplot_rotated_coords,scale=0.8,red]
+            \draw[fill,opacity=0.4] (1,2,0) coordinate (t1) --
+            (4,2,0) coordinate (t2) -- (4,3.5,0) coordinate (t3)
+            to[out=0,in=-135] (3,4,0)  coordinate (t4)
+            --(2,4,0) coordinate (t5)
+            to[out=-270,in=0] (1,2,0) coordinate (t6) -- cycle;
+        \end{scope}
+        \foreach \X in {2,...,5}
+            {\draw[blue!50!green] (t\X) -- (m\X);}
+        \draw[dashed,blue!50!green] (t6) -- (m6);
+        \foreach \X in {1,...,5}
+            {\draw[dashed] (m\X) -- (b\X);}
+        \shade[left color=blue!60!green,right color=blue!40!green,opacity=0.4]
+        (m2) -- (m3) -- (t3) -- (t2) -- cycle;
+        \shade [left color=blue!40!green,right color=blue!70!green,opacity=0.4]
+        (m3) to[out=0,in=-135] (m4) -- (t4) to[out=-135,in=0] (t3)-- cycle;
+        \shade [left color=blue!70!green,right color=blue!75!green,opacity=0.4]
+        (m4) -- (m5) -- (t5) -- (t4)-- cycle;
+    \end{tikzpicture}
+\end{center}

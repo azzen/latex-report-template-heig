@@ -1,0 +1,20 @@
+\newcommand{\incfig}[1]{%
+    \def\svgwidth{\columnwidth}
+    \import{./figures/}{#1.pdf_tex}
+}
+
+\newcommand{\incfigvendor}[1]{%
+    \def\svgwidth{\columnwidth}
+    \import{./vendor/}{#1.pdf_tex}
+}
+
+\renewcommand{\incfigvendor}[2][1]{%
+    \def\svgwidth{#1\columnwidth}
+    \import{./vendor/}{#2.pdf_tex}
+}
+
+\begingroup\expandafter\expandafter\expandafter\endgroup
+\expandafter\ifx\csname pdfsuppresswarningpagegroup\endcsname\relax
+\else
+  \pdfsuppresswarningpagegroup=1\relax
+\fi
