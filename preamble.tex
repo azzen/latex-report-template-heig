@@ -66,13 +66,19 @@
 
 % Page margins
 \usepackage[top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm, showframe=false]{geometry}
+
+\pagestyle{empty}
 \usepackage{fancyhdr}                 % Custom header and footer
+\setlength{\headheight}{27.06pt}
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{1pt}
 
 % Header and footer condiguration
 \fancyhead[L]{\reportTitle}
+\fancyhead[R]{}
 \fancyfoot{}
 \renewcommand{\footrulewidth}{1pt}
 \fancyfoot[R]{Page \thepage}
-\fancyfoot[L]{HEIG-VD - \authorName}
+\fancyfoot[L]{\authorName}
 
 \input{./libs/incfig.sty}
